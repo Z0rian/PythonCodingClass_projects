@@ -5,7 +5,7 @@ Created on Mon Sep 14 21:39:17 2020
 @author: zorian
 """
 
-words_to_scramble = ['keyboard', 'obsidion', 'person', 'camera', 'television']
+words_to_scramble = ['keyboard', 'grapefruit', 'obsidion', 'person', 'camera', 'television']
 
 #import random
 from numpy import random
