@@ -7,7 +7,7 @@ Created on Wed Sep 23 11:29:48 2020
 #asking for how many passwords it will spit out, and how long the random chars should be.
 import random
 
-chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*,.<>/;:-_=+`~'
+chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!$%^&*,.<>/ '
     
 passnum = input('How many passwords would you like to create?')
 passnum = int(passnum)
@@ -20,15 +20,50 @@ passlen = int(passlen)
 loopsleft = 5
 
 
-for p in range(passnum):
-    password = ''
+def randchars():
+    randomsegment = ''
     for c in range(passlen):
-        password += random.choice(chars)
+        randomsegment += random.choice(chars)
+    return randomsegment
+
+
+
+#take a word like Zorian and turn it into Z0r1an
+def leetify(inputword):
+    leetword = inputword.replace('o', '0')
+    leetword = leetword.replace('e', '3')
+    leetword = leetword.replace('i', '1')
+    leetword = leetword.replace('b', 8')
+    leetword = leetword.replace('s', '5')
+    leetword = leetword.replace('l', '1')
+    leetword = leetword.replace('a', '4')
+    leetword = leetword.replace('O', '0')
+    leetword = leetword.replace('E', '3')
+    leetword = leetword.replace('I', '1')
+    leetword = leetword.replace('B', '8')
+    leetword = leetword.replace('S', '$')
+    leetword = leetword.replace('g', '&')
+    leetword = leetword.replace('A', '4')
+    leetword = leetword.replace('L', '1')
+    return leetword
+
+
+
+keywords = []
+
+#populating keywords:
+while loopsleft > 0:
+    word = input(f'What should the part of the password that you already know be? Pet name, favorate food? {loopsleft} left.')
+    keywords.append(word)
+    keywords.append(leetify(word))
+    loopsleft -= 1
     
-    
-    #Adding a key word into the random digits
-    while loopsleft > 0:
-        passpart = input(f'What should the part of the password that you already know be? Pet name, favorate food? {loopsleft} left.')
-        passpart = int(passpart)
-        password = passpart + password
-        print(password)
+
+
+
+
+for p in range(passnum):
+    password = random.choice(keywords)
+    password += randchars()
+    password += random.choice(keywords)
+    print(password)

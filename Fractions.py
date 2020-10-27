@@ -21,6 +21,12 @@ class Fraction():
         new_frac = Fraction(new_num, new_den)
         return new_frac
     
+    def gcd(self):
+        a = self.num
+        b = self.den
+        if a == 0:
+            return a
+        return self.gcd(b, a % b)
     
 class Mixed(Fraction):
         
