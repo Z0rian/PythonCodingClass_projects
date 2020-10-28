@@ -7,7 +7,7 @@ Created on Wed Sep 23 11:29:48 2020
 #asking for how many passwords it will spit out, and how long the random chars should be.
 import random
 
-chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!$%^&*,.<>/ '
+chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!$%^&*,.<>/     1234567890'
     
 passnum = input('How many passwords would you like to create?')
 passnum = int(passnum)
@@ -17,7 +17,7 @@ passlen = int(passlen)
 
 
 #creating random chars passnum number of times...
-loopsleft = 5
+#loopsleft = 5
 
 
 def randchars():
@@ -33,7 +33,7 @@ def leetify(inputword):
     leetword = inputword.replace('o', '0')
     leetword = leetword.replace('e', '3')
     leetword = leetword.replace('i', '1')
-    leetword = leetword.replace('b', 8')
+    leetword = leetword.replace('b', '8')
     leetword = leetword.replace('s', '5')
     leetword = leetword.replace('l', '1')
     leetword = leetword.replace('a', '4')
@@ -44,12 +44,18 @@ def leetify(inputword):
     leetword = leetword.replace('S', '$')
     leetword = leetword.replace('g', '&')
     leetword = leetword.replace('A', '4')
-    leetword = leetword.replace('L', '1')
     return leetword
 
 
 
 keywords = []
+
+#asking how many words they want to put in. the password will still only include 2, but it will
+#increase variaty.
+loopsleft = input('How many words should I choose from?')
+loopsleft = int(loopsleft)
+
+
 
 #populating keywords:
 while loopsleft > 0:
