@@ -75,10 +75,47 @@ while loopsleft > 0:
     
 
 
+print('In what order would you like the password to be?')
+
+order = input('Options: 1. Word - 2. Word char - 3. Word char word - 4. Word word char word - 5. Word char word char - 6. Word char word char word?')
+order = int(order)
 
 
-for p in range(passnum):
-    password = random.choice(keywords)
-    password += randchars()
-    password += random.choice(keywords)
-    print(password)
+print('\nHere are some options for you. Increase the number of passwords at the beginning for more.\n')
+if order == 1:
+    for p in range(passnum):
+        password = random.choice(keywords)
+        print(password)
+elif order == 2:
+    for p in range(passnum):
+        password = random.choice(keywords)
+        password += randchars()
+        print(password)
+elif order == 3:
+    for p in range(passnum):
+        password = random.choice(keywords)
+        password += randchars()
+        password += random.choice(keywords)
+        print(password)
+elif order == 4:
+    for p in range(passnum):
+        password = random.choice(keywords)
+        password += random.choice(keywords)
+        password += randchars()
+        password += random.choice(keywords)
+        print(password)
+elif order == 5:
+    for p in range(passnum):
+        password = random.choice(keywords)
+        password += randchars()
+        password += random.choice(keywords)
+        password += randchars()
+        print(password)
+elif order == 6:
+    for p in range(passnum):
+        password = random.choice(keywords)
+        password += randchars()
+        password += random.choice(keywords)
+        password += randchars()
+        password += random.choice(keywords)
+        print(password)
