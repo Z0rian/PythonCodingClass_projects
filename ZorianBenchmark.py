@@ -33,65 +33,33 @@ import time
 time.time()
 
 
+times = []
+
+repeats = 5
+
 #---------------------------
+def benchmatrix():
+    start1 = time.time()
+    matrix = np.random.randint(0, 2, size=(10000,100000))
+    end1 = time.time()
+    time1 = end1-start1
 
-#time1
-start1 = time.time()
-
-matrix = np.random.randint(0, 2, size=(10000,100000))
-
-end1 = time.time()
-time1 = end1-start1
-print(f'Time 1 = {time1}')
-#---------------------------
+    
+    return time1
 
 
-#time2
-start2 = time.time()
 
-matrix = np.random.randint(0, 2, size=(10000,100000))
-
-end2 = time.time()
-time2 = end2-start2
-print(f'Time 2 = {time2}')
-#---------------------------
-
-
-#time3
-start3 = time.time()
-
-matrix = np.random.randint(0, 2, size=(10000,100000))
-
-end3 = time.time()
-time3 = end3-start3
-print(f'Time 3 = {time3}')
-#---------------------------
-
-
-#time4
-start4 = time.time()
-
-matrix = np.random.randint(0, 2, size=(10000,100000))
-
-end4 = time.time()
-time4 = end4-start4
-print(f'Time 4 = {time4}')
-#---------------------------
-
-
-#time5
-start5 = time.time()
-
-matrix = np.random.randint(0, 2, size=(10000,100000))
-
-end5 = time.time()
-time5 = end5-start5
-print(f'Time 5 = {time5}')
-#---------------------------
+for n in range(repeats) :
+    times.append(benchmatrix())
+    print(f'Time {len(times)} = {times[-1]}')
+    
+    
+    
+    
 
 
 #make average time and award points.
-AvgTime = (time1 + time2 + time3 + time4 + time5)/5
+AvgTime = (sum(times)/len(times))
 
 print(AvgTime)
 
