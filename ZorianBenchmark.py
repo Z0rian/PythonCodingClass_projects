@@ -33,39 +33,43 @@ import time
 time.time()
 
 
-times = []
+
 
 repeats = 5
 
 #---------------------------
-def benchmatrix():
+def benchmatrixrand():
     start1 = time.time()
     matrix = np.random.randint(0, 2, size=(10000,100000))
     end1 = time.time()
     time1 = end1-start1
+    return time1
 
-    
+
+def benchmatrix():
+    start1 = time.time()
+    matrix = np.full( shape=(30500,100000), fill_value = 110706)
+    end1 = time.time()
+    time1 = end1-start1
     return time1
 
 
 
-for n in range(repeats) :
-    times.append(benchmatrix())
-    print(f'Time {len(times)} = {times[-1]}')
-    
-    
-    
-    
 
+def runbenchmark(benchmark, repeats, label):
+    times = []
+    for n in range(repeats) :
+        times.append(benchmark())
+        print(f'Time {len(times)} = {times[-1]}')
+        
+    #make average time and award points.
+    AvgTime = (sum(times)/len(times))
+    print(AvgTime)
+    points = (100 - (AvgTime*AvgTime))
+    print(f'You got {points} points on {label}! (Higher is better)')
 
-#make average time and award points.
-AvgTime = (sum(times)/len(times))
-
-print(AvgTime)
-
-points = (10 - AvgTime)*10
-
-print(f'You got {points} points!(Higher is better)')
+runbenchmark(benchmatrixrand, repeats, "Random Matrix Benchmark")
+runbenchmark(benchmatrix, repeats, "Set Matrix Benchmark")
 
 
 
