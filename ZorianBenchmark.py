@@ -29,6 +29,8 @@ matrix = np.random.randint(0, 2, size= (20,30))
 # Computes average times
 
 
+
+
 import time
 time.time()
 
@@ -53,6 +55,16 @@ def benchmatrix():
     time1 = end1-start1
     return time1
 
+def benchpicalc():
+    start1 = time.time()
+    pi = 0
+    for n in range(10000000):
+      pi += ((-1)**n) / (2*n + 1)
+    print(4 * pi)
+    end1 = time.time()
+    time1 = end1-start1
+    return time1
+
 
 
 
@@ -70,10 +82,7 @@ def runbenchmark(benchmark, repeats, label):
 
 runbenchmark(benchmatrixrand, repeats, "Random Matrix Benchmark")
 runbenchmark(benchmatrix, repeats, "Set Matrix Benchmark")
-
-
-
-
+runbenchmark(benchpicalc, repeats, "Pi Calculation Benchmark")
 
 
 
